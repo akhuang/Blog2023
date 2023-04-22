@@ -1,0 +1,26 @@
+<?xml-stylesheet href="/rss.xsl" type="text/xsl"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>红与黑的碎片</title>
+    <link>http://blog.phoenixhuang.top/</link>
+    <description>Recent content on 红与黑的碎片</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>This is a customized copyright.</copyright>
+    
+        <atom:link href="http://blog.phoenixhuang.top/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    
+        <item>
+        <title>Blog</title>
+        <link>http://blog.phoenixhuang.top/blog/</link>
+        <pubDate>Sat, 22 Apr 2023 21:19:39 +0800</pubDate>
+        
+        <guid>http://blog.phoenixhuang.top/blog/</guid>
+        <description>红与黑的碎片 http://blog.phoenixhuang.top/blog/ -- http://blog.phoenixhuang.top/blog/ - This is a customized copyright.</description>
+        </item>
+    
+    
+  </channel>
+</rss> 
