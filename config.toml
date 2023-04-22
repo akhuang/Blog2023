@@ -21,10 +21,10 @@ theme = "diary"
 [params]
 subtitle = "技术、生活"
 enableGitalk = false
-enableGiscus = false
+enableGiscus = true
 
 # Microsoft Clarity (https://clarity.microsoft.com/) is a free user behavior recording and analytics tool
-clarity = "abcdefghzd"
+clarity = "gsk3zfzroj"
 
 # Twitter Card and Open Graph settings
 enableOpenGraph = true
@@ -33,10 +33,10 @@ title = "红与黑的碎片" # will set 'og:site_name'
 description = "My HomePage Description"  # will set 'og:description'
 
 [params.gitalk]
-  owner = "user"
-  repo = "repo name"
-  client_id = "your client id"
-  client_secret = "your client secret"
+  owner = "akhuang"
+  repo = "Blog2023"
+  client_id = ""
+  client_secret = ""
 [taxonomies]
    tag = "tags"
    category = "categories"
@@ -49,17 +49,17 @@ theme="github-light"
 
 # Please visit https://giscus.app/ to generate settings.
 [params.giscus]
-    data_repo="username/repo"
-    data-repo-id="**************************"    
+    data_repo="akhuang/Blog2023"
+    data-repo-id="R_kgDOJaAa5A"    
     data_category="General"
-    data_category_id="*********************"
+    data_category_id="DIC_kwDOJaAa5M4CV96n"
     data_mapping="pathname"
     data_strict="0"
     data_reactions_enabled="1"
     data_emit_metadata="0"
     data_input_position="bottom"
     data_theme="preferred_color_scheme"
-    data_lang="en"
+    data_lang="zh-CN"
     crossorigin="anonymous"
 
 
