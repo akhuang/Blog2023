@@ -2,7 +2,7 @@ baseURL = "http://blog.phoenixhuang.top/"
 DefaultContentLanguage = "zh" # Theme's display language, supports: en, fr, zh, zh-hant
 languageCode = "en-us"
 title = "红与黑的碎片"
-copyright = "This is a customized copyright."
+copyright = "PhoenixHF 本站遵循 CC-BY-NC 4.0 协议"
 theme = "diary"
 # googleAnalytics = "UA-123-45"
 
@@ -30,7 +30,7 @@ clarity = "gsk3zfzroj"
 enableOpenGraph = true
 enableTwitterCards = true
 title = "红与黑的碎片" # will set 'og:site_name'
-description = "My HomePage Description"  # will set 'og:description'
+description = "技术、生活、思考"  # will set 'og:description'
 
 [params.gitalk]
   owner = "akhuang"
