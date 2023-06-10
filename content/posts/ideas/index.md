@@ -13,9 +13,11 @@ comment: true
 ## 20230602
 ## Playwright
 
-Playwright 官方文档使用 Markdown 语法以优雅的方式呈现内容，其结果值得深究。例如，以下的 HTML 代码：
+Playwright 官方文档使用 Markdown 语法以优雅的方式呈现内容，其结果值得深究。例如，下面的代码块，在文档中使用 html card 表示代码块：
 
-```html
+````html 
+
+```html card
 <h3>Sign up</h3>
 <label>
   <input type="checkbox" /> Subscribe
@@ -24,8 +26,14 @@ Playwright 官方文档使用 Markdown 语法以优雅的方式呈现内容，�
 <button>Submit</button>
 ```
 
-被渲染后的效果出类拔萃。请参见下图：
+````
+
+被渲染后的效果非常不错。请参见下图：
 ![](2023-06-02-22-47-08.png)
+
+> 20230610 更新     
+使用的是 docusaurus 来渲染的，可以参考其文档。
+
 
 参考    
 [页面效果](https://playwright.dev/docs/locators)    
