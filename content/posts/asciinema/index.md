@@ -20,6 +20,7 @@ sudo apt-get install asciinema
 brew install asciinema
 
 ```
+
 See other [installation options](https://asciinema.org/docs/installation#installing-on-linux)
 
 ### 基本使用
