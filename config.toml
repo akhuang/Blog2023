@@ -1,4 +1,4 @@
-baseURL = "http://blog.phoenixhuang.top/"
+baseURL = "http://blog.huangf.org/"
 DefaultContentLanguage = "zh" # Theme's display language, supports: en, fr, zh, zh-hant
 languageCode = "en-us"
 title = "红与黑的碎片"
