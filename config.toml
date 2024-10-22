@@ -1,8 +1,8 @@
 baseURL = "http://blog.huangf.org/"
 DefaultContentLanguage = "zh" # Theme's display language, supports: en, fr, zh, zh-hant
 languageCode = "en-us"
-title = "红与黑的碎片"
-copyright = "PhoenixHF 本站遵循 CC-BY-NC 4.0 协议"
+title = "黄凤的独立博客"
+copyright = "HuangFeng 本站遵循 CC-BY-NC 4.0 协议"
 theme = "diary"
 # googleAnalytics = "UA-123-45"
 
