@@ -29,7 +29,7 @@ clarity = "gsk3zfzroj"
 # Twitter Card and Open Graph settings
 enableOpenGraph = true
 enableTwitterCards = true
-title = "红与黑的碎片" # will set 'og:site_name'
+title = "黄凤的独立博客" # will set 'og:site_name'
 description = "技术、生活、思考"  # will set 'og:description'
 
 [params.gitalk]
@@ -52,7 +52,7 @@ theme="github-light"
     data_repo="akhuang/Blog2023"
     data-repo-id="R_kgDOJaAa5A"    
     data_category="General"
-    data_category_id="DIC_kwDOJaAa5M4CV96n"
+    data_category_id="DIC_kwDOJaAa5M4CV96m"
     data_mapping="pathname"
     data_strict="0"
     data_reactions_enabled="1"
