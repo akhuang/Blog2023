@@ -1,5 +1,5 @@
 ---
-title: ""
+title: "Gemini Deep Research 深度研究试用"
 date: 2025-01-01T13:31:42+08:00
 description: ""
 tags: []
