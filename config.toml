@@ -17,11 +17,20 @@ theme = "diary"
     noClasses = true
     style = "perldoc"
     tabWidth = 4
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+    unsafe = true
+  [markup.tableOfContents]
+    endLevel = 3
+    ordered = false
+    startLevel = 2
 
 [params]
 subtitle = "技术、生活"
 enableGitalk = false
 enableGiscus = true
+enableInlineShortcodes = true  # Enable Mermaid diagrams
+customCSS = ["/css/custom.css"]
 
 # Microsoft Clarity (https://clarity.microsoft.com/) is a free user behavior recording and analytics tool
 clarity = "gsk3zfzroj"
@@ -78,3 +87,13 @@ weight = 1
 url = "/index.xml"
 name = "RSS Feed"
 weight = 4
+ 
+
+[module]
+[[module.imports]]
+    path = "github.com/hugomods/mermaid"
+
+[module.hugoVersion]
+extended = false
+min = "0.95.0"
+

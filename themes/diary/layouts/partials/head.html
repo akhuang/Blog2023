@@ -55,6 +55,9 @@
 <link rel="icon" href="{{ .Site.Params.favicon | absURL }}">
 {{ end }}
 
+{{ $customCSS := resources.Get "css/custom.css" | minify | fingerprint }}
+<link rel="stylesheet" href="{{ $customCSS.RelPermalink }}" integrity="{{ $customCSS.Data.Integrity }}">
+
 <!-- For compatibility. View https://github.com/AmazingRise/hugo-theme-diary/pull/135 for details.-->
 {{- $hugoVersion := split (replaceRE ".*([0-9]+)\\.([0-9]+)\\.([0-9]+).*" "$1 $2 $3" hugo.Version) " " -}}
 {{- if and (eq (int (index $hugoVersion 0)) 0) (ge (int (index $hugoVersion 1)) 101) -}}
@@ -163,7 +166,7 @@
     href="https://unpkg.com/@waline/client@v2/dist/waline.css"
   />
 {{ end }}
-
+{{ partial "mermaid/assets/js" . }}
 <!-- head custom -->
 {{- partial "extended_head.html" . }}
 
