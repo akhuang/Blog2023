@@ -9,14 +9,6 @@ images: []
 categories: "Deep Research"
 comment: true
 ---
-好的，我将进行关于 AI Engineer Summit 2025 的深度解读研究，并撰写一份不少于 2 万字的中文报告。
-
-这份报告将包含：
-- **研究背景**：探讨 AI 工程领域的发展趋势，以及本次峰会的重要性。
-- **研究需求**：解析本次会议的核心主题、目标，重点关注的技术趋势、嘉宾演讲内容及行业影响。
-- **通用要求**：所有信息均来自英文资料，并使用中文撰写，以确保信息的全面性和权威性。
-
-我将在研究完成后提供详细的报告供您审阅。
 
 # 引言 (Introduction)  
 人工智能（AI）技术正以前所未有的速度融入各行各业，从自动驾驶、智能客服到内容生成，无处不在。然而，将AI模型从实验室原型推向大规模应用，并非仅靠算法本身就能成功。这中间涉及数据处理、模型部署、系统架构、DevOps运维、持续评估改进以及伦理风险控制等一系列工程实践。这催生了一个新兴且快速发展的专业领域——**AI工程（AI Engineering）**。AI工程师作为这一领域的核心角色，越来越受到产业重视，被视为未来十年最炙手可热的技术岗位之一 ([The Rise of the AI Engineer - Latent.Space](https://www.latent.space/p/ai-engineer#:~:text=Engineer)) ([The Rise of the AI Engineer - Latent.Space](https://www.latent.space/p/ai-engineer#:~:text=,Andrej%20Karpathy))。正如前 OpenAI 与特斯拉高级研究员 Andrei Karpathy 所指出：“未来AI工程师的数量可能会显著超过机器学习工程师。即使从不亲自训练新模型，你也可以在这一角色上取得成功” ([AI Engineer Summit: Agents at Work!](https://www.ai.engineer/#:~:text=%3E%20,role%20without%20ever%20training%20anything)) ([AI Engineer Summit: Agents at Work!](https://www.ai.engineer/#:~:text=role%20without%20ever%20training%20anything.))。这反映出AI应用开发范式的转变：利用现有强大的预训练模型，通过工程手段将其融入产品，比从零训练模型更为常见。AI工程正在成为软件工程的新支柱。  
