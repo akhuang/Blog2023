@@ -1,5 +1,5 @@
 ---
-title: "Dify、FastGPT 和 Ragflow 这三个 AI 流程平台深度研究报告"
+title: "深度拆解：Dify、FastGPT 和 Ragflow 谁才是最强 AI 流程平台？🔥"
 date: 2025-03-06T20:54:00+08:00
 description: ""
 tags: []
