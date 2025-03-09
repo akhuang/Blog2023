@@ -3,7 +3,7 @@ title: "深度拆解：Dify、FastGPT 和 Ragflow 谁才是最强 AI 流程平�
 date: 2025-03-06T20:54:00+08:00
 description: ""
 tags: []
-featured_image: ""
+featured_image: "image.jpeg"
 # images is optional, but needed for showing Twitter Card
 images: []
 categories: "Deep Research"
