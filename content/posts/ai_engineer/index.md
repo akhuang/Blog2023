@@ -3,7 +3,7 @@ title: "AI Engineer Summit 2025 的深度解读研究"
 date: 2025-02-26T23:22:21+08:00
 description: ""
 tags: [AI, AI Engineer Summit]
-featured_image: ""
+featured_image: "image.jpeg"
 # images is optional, but needed for showing Twitter Card
 images: []
 categories: "Deep Research"
