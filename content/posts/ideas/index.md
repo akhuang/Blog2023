@@ -7,7 +7,8 @@ featured_image: ""
 # images is optional, but needed for showing Twitter Card
 images: []
 categories: "思考"
-comment: true 
+comment: true
+draft: true
 ---
 
 ## 20230602
