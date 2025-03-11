@@ -8,6 +8,7 @@ featured_image: "murmurs.png"
 images: []
 categories:
 comment: true
+draft: true
 ---
 
 ## 2025.02.21
