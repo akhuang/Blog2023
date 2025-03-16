@@ -8,7 +8,7 @@ featured_image: ""
 images: []
 categories:
 comment: true
-draft: true
+draft: false
 ---
 ## 引言
 这是一篇关于 SpineRuntime 中 Skins 实现的分析文章，主要分析 SpineRuntime 中 Skins 的实现方式和使用方法。
