@@ -1,6 +1,6 @@
 ---
 title: ""
-date:
+date: {{ .Date }}
 description: ""
 tags: []
 featured_image: ""
