@@ -1,5 +1,6 @@
 ---
-title: "我不是在写分类器，我在决定谁有资格触发模型"
+title: "从“你是谁”看 AI 人设"
+subtitle: "PromptPilot 系统设计与语义路由在角色控制中的探索"
 date: 2025-04-04T22:47:20+08:00
 description: ""
 tags: []
