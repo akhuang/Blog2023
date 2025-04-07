@@ -1,8 +1,7 @@
 ---
 title: "从“你是谁”看 AI 人设"
-subtitle: "PromptPilot 系统设计与语义路由在角色控制中的探索"
 date: 2025-04-04T22:47:20+08:00
-description: ""
+description: "PromptPilot 系统设计与语义路由在角色控制中的探索"
 tags: []
 featured_image: ""
 # images is optional, but needed for showing Twitter Card
