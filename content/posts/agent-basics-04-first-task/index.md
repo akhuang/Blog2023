@@ -1,8 +1,8 @@
 ---
 title: "Agent 入门 04｜第一个真实任务：把三份材料整理成行动清单"
 date: 2026-08-19T09:40:00+08:00
-description: "在空白练习文件夹中完成读取、计划、创建和检查，第一次看清 Agent 如何操作文件。"
-tags: [Agent, Claude Code, PowerShell, 入门]
+description: "在隔离的练习文件夹中完成读取、计划、创建和检查，第一次看清 Agent 如何操作文件。"
+tags: [Agent, Claude Code, Windows Terminal, 入门]
 featured_image: ""
 images: []
 categories: "Agent 入门"
@@ -16,70 +16,26 @@ draft: false
 
 这一篇用三份本地文件走完一条最小工作路径：**读取材料 → 说出计划 → 创建结果 → 对照检查**。任务不是写代码，而是把会议信息整理成一份 Markdown 行动清单。做完以后，你会第一次看清“聊天回答”和“Agent 操作文件”的差别。
 
-## 第一步：建立一个空白练习文件夹
+## 第一步：下载并打开练习文件夹
 
-打开 PowerShell。复制下面三行，它会在“文档”目录中新建 `agent-first-task` 文件夹，并进入该目录：
+先下载我准备好的 [Agent 第一个任务练习包](agent-first-task.zip)。在文件资源管理器中找到下载的 ZIP，右键选择 **全部解压**，把 `agent-first-task` 文件夹放到“文档”目录。不要拿现有工作文件夹代替这个练习目录。
 
-```powershell
-$practiceDir = Join-Path ([Environment]::GetFolderPath("MyDocuments")) "agent-first-task"
-New-Item -ItemType Directory -Path $practiceDir
-Set-Location $practiceDir
-```
+进入解压后的文件夹，你应该看到 `requirements.txt`、`meeting-notes.txt` 和 `template.txt`。三份材料都很短，可以双击打开，先看一眼里面写了什么；稍后你就能逐项判断 Agent 有没有漏掉、写错或自己编造信息。
 
-如果提示文件夹已经存在，把第一行末尾的名字改成 `agent-first-task-2` 再执行。我们需要的是一个空白目录，不要拿现有工作文件夹代替。
-
-接着复制以下三段命令，生成三份练习材料。
-
-```powershell
-@'
-目标：为周五的新同事分享会准备一份行动清单。
-输出格式：Markdown。
-清单必须写明事项、负责人和截止时间；不确定的信息单独列出。
-'@ | Set-Content -Encoding utf8 .\需求.txt
-```
-
-```powershell
-@'
-王宁：周三下班前整理 Claude Code 安装截图。
-李晓：周四中午前收集两个新手常见问题。
-陈晨：周四下班前确认会议室和投屏设备。
-大家还没有确定分享会的具体开始时间。
-'@ | Set-Content -Encoding utf8 .\会议记录.txt
-```
-
-```powershell
-@'
-# 新同事分享会行动清单
-
-## 本周任务
-
-| 事项 | 负责人 | 截止时间 |
-|---|---|---|
-
-## 待确认
-'@ | Set-Content -Encoding utf8 .\模板.md
-```
-
-确认目录里只有这三个文件：
-
-```powershell
-Get-ChildItem
-```
-
-你应该看到 `需求.txt`、`会议记录.txt` 和 `模板.md`。这三份材料很短，所以稍后可以逐项判断 Agent 有没有漏掉、写错或自己编造信息。
+回到这个文件夹，在空白处右键选择 **在终端中打开**。如果菜单里没有这一项，点击资源管理器顶部的地址栏，输入 `wt` 后按回车。打开的 Windows Terminal 会自动位于当前练习文件夹，不需要手工输入一串切换目录的命令。
 
 ## 第二步：让 Agent 先读，再给计划
 
 仍在当前目录运行：
 
-```powershell
+```console
 claude
 ```
 
 把下面这段话完整发给 Claude Code：
 
 ```text
-请读取当前文件夹中的 需求.txt、会议记录.txt 和 模板.md。
+请读取当前文件夹中的 requirements.txt、meeting-notes.txt 和 template.txt。
 先不要创建或修改任何文件。
 请告诉我：你理解的目标是什么、准备读取哪些事实、最终会创建什么文件，以及你会怎样检查结果。
 ```
@@ -110,12 +66,7 @@ Claude Code 可能会展示即将写入的内容，或询问是否允许创建�
 只报告检查结果，不要修改文件。
 ```
 
-它应该明确告诉你哪些内容一致，是否有遗漏。然后输入 `/exit` 退出 Claude Code，回到 PowerShell，亲手查看结果：
-
-```powershell
-Get-ChildItem
-Get-Content .\行动清单.md
-```
+它应该明确告诉你哪些内容一致，是否有遗漏。然后输入 `/exit` 退出 Claude Code，回到文件资源管理器。你会看到新出现的 `行动清单.md`；双击打开，亲手查看结果。
 
 最后只核对四件事：三个原始文件还在；新增文件名正确；三个人与三个期限没有串位；未知的开始时间仍然是“待确认”。这比一句“任务完成”更有价值，因为你检查的是电脑上真正留下来的结果。
 

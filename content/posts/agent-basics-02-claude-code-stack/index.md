@@ -10,7 +10,7 @@ draft: false
 
 > 系列导读：[Agent 入门：给 Windows 小白的第一套地图](/posts/agent-basics/)
 
-在 Windows 上打开 CC Switch，选中 XLB，再到 PowerShell 输入 `claude`。屏幕里很快出现一个能读项目、改文件、运行命令的 Agent。
+在 Windows 上打开 CC Switch，选中 XLB，再到 Windows Terminal 输入 `claude`。屏幕里很快出现一个能读项目、改文件、运行命令的 Agent。
 
 这时最容易冒出一个误解：“我已经把 XLB 模型装进电脑，Claude Code 就是这个模型，Skill 是给模型加的新能力。”
 
@@ -24,7 +24,7 @@ draft: false
 | --- | --- | --- |
 | Claude 模型 | Anthropic 或模型服务方的服务器 | 理解输入、判断下一步、生成文字或工具调用 |
 | Claude Code | 你的 Windows 电脑 | 管理 Agent 循环、上下文、会话、工具与执行环境 |
-| Tool | 本机或它连接的服务 | 读写文件、搜索、执行 PowerShell、访问外部系统 |
+| Tool | 本机或它连接的服务 | 读写文件、搜索、执行本地命令、访问外部系统 |
 | Skill | 本机配置目录中的 Markdown 文件及配套资源 | 向 Agent 提供可复用的知识、步骤和工作方式 |
 | CC Switch | 通常是本机第三方配置工具 | 切换服务地址、凭据或模型配置；也可按 API 格式开启本地路由 |
 | XLB | 公司内部算力 | 本系列中指内部部署的模型服务，内部简称为“Qwen3 35B” |

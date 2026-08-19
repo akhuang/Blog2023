@@ -20,47 +20,47 @@ draft: false
 
 安装顺序也不要颠倒。先装 Claude Code，是为了得到真正执行任务的客户端；再装 CC Switch，是为了给这个客户端切换配置；最后按内部说明填写 XLB Provider，才形成公司要求的请求路径。只装 CC Switch 不会自动得到 Agent，只装 Claude Code 也不会自动知道公司内部通道在哪里。
 
-## 开始前：只准备 PowerShell
+## 开始前：只打开 Windows Terminal
 
-本文适用于 Windows 10 版本 1809 及以上，或 Windows 11。按 `Win` 键，搜索并打开 **PowerShell** 或 **Windows Terminal**。如果每行前面类似下面这样，你就在 PowerShell 里：
+本文适用于 Windows 10 版本 1809 及以上，或 Windows 11。按 `Win` 键，搜索并打开 **Windows Terminal**。如果电脑里没有它，可以从 Microsoft Store 安装；公司电脑无法使用商店时，再使用系统已有的终端。
 
-```text
-PS C:\Users\你的名字>
-```
+Windows Terminal 是装命令窗口的应用，里面默认打开的标签可能叫 PowerShell。你不需要先学 PowerShell 语法：本文让你输入的主要是 `winget`、`git` 和 `claude` 这些普通命令，在 Terminal 的默认标签中就能运行。
 
-基础环境不要求 Python，也不要求 Node.js。Claude Code 现在有 Windows 原生安装器，不需要先用 `npm` 安装。以后某个 Skill 明确包含 Python 脚本时，再按那个 Skill 的说明补装 Python；不要让 Agent 在第一次配置时自行决定安装一串语言环境。
+基础环境不要求 Python，也不要求 Node.js。Claude Code 已提供 Windows 安装包，不需要先用 `npm` 安装。以后某个 Skill 明确包含 Python 脚本时，再按那个 Skill 的说明补装 Python；不要让 Agent 在第一次配置时自行决定安装一串语言环境。
 
-本文也不使用 WSL。WSL 是 Windows 里的 Linux 环境，适合本来就在 Linux 工具链中工作的项目，但它会引入另一套目录和命令。小白第一次接通 Agent 时，Windows 文件就留在 Windows 目录，PowerShell 命令就在 PowerShell 执行，更容易知道自己正在操作哪台电脑上的哪个文件。
+本文也不使用 WSL。WSL 是 Windows 里的 Linux 环境，适合本来就在 Linux 工具链中工作的项目，但它会引入另一套目录和命令。小白第一次接通 Agent 时，Windows 文件就留在 Windows 目录，命令就在 Windows Terminal 执行，更容易知道自己正在操作哪台电脑上的哪个文件。
 
 ## 第一步：Git for Windows 可选，但推荐安装
 
-Claude Code 在没有 Git for Windows 时也可以使用 PowerShell 执行命令，所以 Git 不是启动它的硬门槛。**只完成本系列的文件练习，可以直接跳到第二步。**以后要让 Agent 进入用 Git 管理的项目，再安装 Git for Windows；官方推荐它，是因为很多项目使用 Git 管理文件，Claude Code 也可以使用随 Git 提供的 Bash 工具。
+Claude Code 在没有 Git for Windows 时也能执行本地命令，所以 Git 不是启动它的硬门槛。**只完成本系列的文件练习，可以直接跳到第二步。**以后要让 Agent 进入用 Git 管理的项目，再安装 Git for Windows；官方推荐它，是因为很多项目使用 Git 管理文件，Claude Code 也可以使用随 Git 提供的 Bash 工具。
 
-如果你已经安装过 Git，可以在 PowerShell 输入：
+如果你已经安装过 Git，可以在 Terminal 输入：
 
-```powershell
+```console
 git --version
 ```
 
-出现版本号就说明 Git 已可用；提示找不到 `git` 也不影响本系列后续步骤。需要进入 Git 项目时，再从 [Git for Windows 官方页面](https://git-scm.com/downloads/win)下载安装，安装界面保持默认选项即可。完成后关闭 PowerShell，再重新打开一次。
+出现版本号就说明 Git 已可用；提示找不到 `git` 也不影响本系列后续步骤。需要进入 Git 项目时，再从 [Git for Windows 官方页面](https://git-scm.com/downloads/win)下载安装，安装界面保持默认选项即可。完成后关闭 Terminal，再重新打开一次。
 
-## 第二步：用 PowerShell 安装 Claude Code
+## 第二步：用 WinGet 安装 Claude Code
 
-复制下面这一整行到 PowerShell，按回车：
+先输入 `winget --version`。看到版本号就继续；如果提示找不到 `winget`，请在 Microsoft Store 更新“应用安装程序（App Installer）”，公司电脑无法使用商店时则联系内部支持，不要改回网上找到的下载脚本。
 
-```powershell
-irm https://claude.ai/install.ps1 | iex
+然后在 Windows Terminal 输入下面这行，按回车：
+
+```console
+winget install Anthropic.ClaudeCode
 ```
 
-`irm` 负责获取官方安装脚本，`iex` 执行它。这是 [Claude Code 官方 Windows 安装文档](https://code.claude.com/docs/en/installation) 当前提供的原生安装方式，不需要管理员终端。
+这是 [Claude Code 官方 Windows 安装文档](https://code.claude.com/docs/en/installation) 提供的 WinGet 安装方式。它比复制一段 PowerShell 下载脚本更容易读：`winget` 是 Windows 包管理器，后面是官方包名。若 WinGet 首次询问是否接受软件源条款，阅读后按界面提示确认。
 
-安装结束后，关闭并重新打开 PowerShell，然后检查版本：
+安装结束后，关闭并重新打开 Windows Terminal，然后检查版本：
 
-```powershell
+```console
 claude --version
 ```
 
-看到版本号，只能说明 **Claude Code 客户端已经装好**，还不能说明内部 XLB 通道已经接通。还可以运行 `claude doctor`，让官方自带的只读诊断检查安装和配置文件。如果安装地址被公司网络策略拦截，请向内部支持人员获取批准的安装方式，不要自行寻找来路不明的脚本或镜像。
+看到版本号，只能说明 **Claude Code 客户端已经装好**，还不能说明内部 XLB 通道已经接通。还可以运行 `claude doctor`，让官方自带的只读诊断检查安装和配置文件。WinGet 安装不会由 Claude Code 自动升级，以后需要更新时运行 `winget upgrade Anthropic.ClaudeCode`。如果安装源被公司网络策略拦截，请向内部支持人员获取批准的安装方式，不要自行寻找来路不明的脚本或镜像。
 
 ## 第三步：先拿到内部配置卡
 
@@ -109,9 +109,9 @@ CC-Switch-v{配置卡版本号}-Windows.msi
 
 ## 第六步：按所选路线验证模型通道
 
-重新打开一个 PowerShell，在任意普通文件夹运行：
+重新打开一个 Windows Terminal，在任意普通文件夹运行：
 
-```powershell
+```console
 claude
 ```
 
