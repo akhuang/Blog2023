@@ -1,0 +1,137 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600" width="1200" height="600" data-generator="fireworks-tech-graph" data-schema-version="1" data-text-metrics="heuristic-v1" data-style-id="1" data-visual-theme="Flat Icon" data-diagram-type="comparison" data-semantic-profile="generic" data-semantic-valid="true" data-quality-profile="showcase" data-max-bends-per-edge="2" data-max-total-bends="8" data-max-route-stretch="1.35" data-max-bridged-crossings="0" data-min-node-gap="40" data-min-container-gutter="20" data-min-label-clearance="4" data-min-segment-length="16">
+  <defs>
+    <marker id="arrow-blue" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#2563eb"/></marker>
+    <marker id="arrow-orange" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#ea580c"/></marker>
+    <marker id="arrow-green" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#16a34a"/></marker>
+    <style>
+      text { font-family: 'Microsoft YaHei','PingFang SC','Hiragino Sans GB','Heiti SC','Arial Unicode MS','Helvetica Neue',Arial,sans-serif; }
+      .section { font-size: 18px; font-weight: 700; fill: #111827; }
+      .section-sub { font-size: 12px; font-weight: 500; fill: #6b7280; }
+      .node-title { font-size: 17px; font-weight: 700; fill: #111827; }
+      .node-sub { font-size: 12px; font-weight: 500; fill: #6b7280; }
+      .edge-label { font-size: 12px; font-weight: 600; fill: #4b5563; }
+      .legend { font-size: 12px; font-weight: 500; fill: #6b7280; }
+    </style>
+  </defs>
+  <rect data-graph-role="background" width="1200" height="600" fill="#ffffff"/>
+
+  <g id="chat-container" data-graph-role="container" data-container-id="chat-container" data-semantic-role="boundary" data-graph-bounds="32,35,568,510">
+    <rect data-graph-role="container" x="32" y="35" width="536" height="475" rx="14" fill="#f8fafc" stroke="#dbe5f1" stroke-width="1.4"/>
+    <circle cx="68" cy="76" r="18" fill="#dbeafe" stroke="#2563eb" stroke-width="1.4"/>
+    <path d="M58 72 Q58 65 66 65 H70 Q78 65 78 72 V77 Q78 84 70 84 H67 L61 89 V83 Q58 81 58 77 Z" fill="none" stroke="#2563eb" stroke-width="1.8" stroke-linejoin="round"/>
+    <text x="98" y="73" class="section">文字聊天</text>
+    <text x="98" y="94" class="section-sub">生成一段回答后，这一轮就结束</text>
+    <rect data-graph-role="reserved" data-reserved-kind="container-header" x="45" y="50" width="285" height="56" fill="none" stroke="none"/>
+  </g>
+  <g id="agent-container" data-graph-role="container" data-container-id="agent-container" data-semantic-role="boundary" data-graph-bounds="632,35,1168,510">
+    <rect data-graph-role="container" x="632" y="35" width="536" height="475" rx="14" fill="#ffffff" stroke="#c4b5fd" stroke-width="1.5"/>
+    <circle cx="668" cy="76" r="18" fill="#ede9fe" stroke="#7c3aed" stroke-width="1.4"/>
+    <path d="M668 63 L672 71 L681 72 L674 78 L676 87 L668 82 L660 87 L662 78 L655 72 L664 71 Z" fill="#7c3aed" opacity="0.9"/>
+    <text x="698" y="73" class="section">Agent 模式</text>
+    <text x="698" y="94" class="section-sub">模型判断下一步，工具行动，结果再回到模型</text>
+    <rect data-graph-role="reserved" data-reserved-kind="container-header" x="645" y="50" width="390" height="56" fill="none" stroke="none"/>
+  </g>
+
+  <path id="chat-question" data-graph-role="edge" data-edge-id="chat-question" data-source="chat-input" data-target="chat-model" data-edge-kind="flow" data-flow="control" data-bends="0" d="M200 226 H264" fill="none" stroke="#2563eb" stroke-width="2.4" stroke-linecap="round" marker-end="url(#arrow-blue)"/>
+  <path id="chat-answer" data-graph-role="edge" data-edge-id="chat-answer" data-source="chat-model" data-target="chat-output" data-edge-kind="flow" data-flow="data" data-bends="0" d="M400 226 H448" fill="none" stroke="#2563eb" stroke-width="2.4" stroke-linecap="round" marker-end="url(#arrow-blue)"/>
+
+  <path id="agent-task" data-graph-role="edge" data-edge-id="agent-task" data-source="agent-input" data-target="agent-core" data-edge-kind="flow" data-flow="control" data-bends="0" d="M792 206 H848" fill="none" stroke="#2563eb" stroke-width="2.4" stroke-linecap="round" marker-end="url(#arrow-blue)"/>
+  <path id="agent-tool-call" data-graph-role="edge" data-edge-id="agent-tool-call" data-source="agent-core" data-target="agent-tool" data-edge-kind="flow" data-flow="control" data-bends="0" d="M1000 206 H1048" fill="none" stroke="#ea580c" stroke-width="2.4" stroke-linecap="round" marker-end="url(#arrow-orange)"/>
+  <path id="agent-action" data-graph-role="edge" data-edge-id="agent-action" data-source="agent-tool" data-target="agent-world" data-edge-kind="flow" data-flow="action" data-bends="0" d="M1094 252 V350" fill="none" stroke="#ea580c" stroke-width="2.4" stroke-linecap="round" marker-end="url(#arrow-orange)"/>
+  <path id="agent-feedback" data-graph-role="edge" data-edge-id="agent-feedback" data-source="agent-world" data-target="agent-core" data-edge-kind="flow" data-flow="read" data-bends="2" d="M1010 396 H924 V260" fill="none" stroke="#16a34a" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-green)"/>
+  <path id="agent-output" data-graph-role="edge" data-edge-id="agent-output" data-source="agent-core" data-target="agent-outcome" data-edge-kind="flow" data-flow="data" data-bends="2" d="M848 230 H820 V396 H792" fill="none" stroke="#2563eb" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-blue)"/>
+
+  <g id="chat-input-node" data-graph-role="node" data-node-id="chat-input" data-semantic-role="user_message" data-graph-bounds="72,178,200,274">
+    <rect x="72" y="178" width="128" height="96" rx="10" fill="#eff6ff" stroke="#2563eb" stroke-width="1.8"/>
+    <path d="M94 199 H111 Q117 199 117 205 V215 Q117 221 111 221 H104 L98 227 V221 H94 Q88 221 88 215 V205 Q88 199 94 199 Z" fill="#dbeafe" stroke="#2563eb" stroke-width="1.4"/>
+    <text x="136" y="217" text-anchor="middle" class="node-title">问题</text>
+    <text x="136" y="246" text-anchor="middle" class="node-sub">你输入的文字</text>
+  </g>
+  <g id="chat-model-node" data-graph-role="node" data-node-id="chat-model" data-semantic-role="double_rect" data-graph-bounds="264,178,400,274">
+    <rect x="264" y="178" width="136" height="96" rx="10" fill="#faf5ff" stroke="#9333ea" stroke-width="2"/>
+    <rect x="269" y="183" width="126" height="86" rx="7" fill="none" stroke="#9333ea" stroke-width="1" opacity="0.55"/>
+    <path d="M332 198 L336 206 L345 207 L338 213 L340 222 L332 217 L324 222 L326 213 L319 207 L328 206 Z" fill="#9333ea" opacity="0.9"/>
+    <text x="332" y="244" text-anchor="middle" class="node-title">模型</text>
+    <text x="332" y="262" text-anchor="middle" class="node-sub">预测下一段文字</text>
+  </g>
+  <g id="chat-output-node" data-graph-role="node" data-node-id="chat-output" data-semantic-role="document" data-graph-bounds="448,178,544,274">
+    <rect x="448" y="178" width="96" height="96" rx="10" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.8"/>
+    <path d="M472 196 H510 L520 206 V229 H472 Z" fill="#dcfce7" stroke="#16a34a" stroke-width="1.3"/>
+    <path d="M510 196 V206 H520" fill="none" stroke="#16a34a" stroke-width="1.3"/>
+    <line x1="479" y1="214" x2="512" y2="214" stroke="#16a34a" stroke-width="1.2" opacity="0.65"/>
+    <line x1="479" y1="221" x2="506" y2="221" stroke="#16a34a" stroke-width="1.2" opacity="0.65"/>
+    <text x="496" y="252" text-anchor="middle" class="node-title">文字回答</text>
+  </g>
+
+  <path data-graph-role="decoration" d="M496 274 V358" fill="none" stroke="#9ca3af" stroke-width="1.6" stroke-dasharray="5 5"/>
+  <circle data-graph-role="decoration" cx="496" cy="372" r="11" fill="#ffffff" stroke="#9ca3af" stroke-width="1.6"/>
+  <rect data-graph-role="decoration" x="491" y="367" width="10" height="10" rx="1" fill="#9ca3af"/>
+  <text data-graph-role="decoration" x="496" y="405" text-anchor="middle" class="node-sub">流程到此结束</text>
+  <g data-graph-role="decoration">
+    <rect x="86" y="446" width="428" height="38" rx="8" fill="#ffffff" stroke="#d1d5db" stroke-width="1.2"/>
+    <text x="300" y="470" text-anchor="middle" font-size="13" font-weight="600" fill="#4b5563">常见线上聊天产品</text>
+  </g>
+
+  <g id="agent-input-node" data-graph-role="node" data-node-id="agent-input" data-semantic-role="user_message" data-graph-bounds="672,160,792,252">
+    <rect x="672" y="160" width="120" height="92" rx="10" fill="#eff6ff" stroke="#2563eb" stroke-width="1.8"/>
+    <path d="M694 181 H710 Q716 181 716 187 V197 Q716 203 710 203 H704 L698 209 V203 H694 Q688 203 688 197 V187 Q688 181 694 181 Z" fill="#dbeafe" stroke="#2563eb" stroke-width="1.4"/>
+    <text x="732" y="202" text-anchor="middle" class="node-title">任务</text>
+    <text x="732" y="230" text-anchor="middle" class="node-sub">目标与完成标准</text>
+  </g>
+  <g id="agent-core-node" data-graph-role="node" data-node-id="agent-core" data-semantic-role="double_rect" data-graph-bounds="848,152,1000,260">
+    <rect x="848" y="152" width="152" height="108" rx="11" fill="#faf5ff" stroke="#9333ea" stroke-width="2.2"/>
+    <rect x="853" y="157" width="142" height="98" rx="8" fill="none" stroke="#9333ea" stroke-width="1" opacity="0.55"/>
+    <path d="M924 174 L928 182 L937 183 L930 189 L932 198 L924 193 L916 198 L918 189 L911 183 L920 182 Z" fill="#9333ea" opacity="0.9"/>
+    <text x="924" y="220" text-anchor="middle" class="node-title">模型 + Agent</text>
+    <text x="924" y="242" text-anchor="middle" class="node-sub">判断下一步</text>
+  </g>
+  <g id="agent-tool-node" data-graph-role="node" data-node-id="agent-tool" data-semantic-role="tool" data-graph-bounds="1048,160,1140,252">
+    <rect x="1048" y="160" width="92" height="92" rx="10" fill="#fff7ed" stroke="#ea580c" stroke-width="1.8"/>
+    <circle cx="1094" cy="191" r="12" fill="#fed7aa" stroke="#ea580c" stroke-width="1.4"/>
+    <circle cx="1094" cy="191" r="4" fill="none" stroke="#ea580c" stroke-width="2"/>
+    <path d="M1094 174 V179 M1094 203 V208 M1077 191 H1082 M1106 191 H1111 M1082 179 L1086 183 M1102 199 L1106 203 M1106 179 L1102 183 M1086 199 L1082 203" stroke="#ea580c" stroke-width="1.8" stroke-linecap="round"/>
+    <text x="1094" y="226" text-anchor="middle" class="node-title">工具</text>
+    <text x="1094" y="244" text-anchor="middle" class="node-sub">读写 / 运行</text>
+  </g>
+  <g id="agent-world-node" data-graph-role="node" data-node-id="agent-world" data-semantic-role="external_system" data-graph-bounds="1010,350,1140,442">
+    <rect x="1010" y="350" width="130" height="92" rx="10" fill="#f0fdfa" stroke="#0d9488" stroke-width="1.8"/>
+    <rect x="1032" y="370" width="86" height="28" rx="5" fill="#ccfbf1" stroke="#0d9488" stroke-width="1.2"/>
+    <circle cx="1043" cy="384" r="3" fill="#0d9488"/>
+    <line x1="1052" y1="380" x2="1108" y2="380" stroke="#0d9488" stroke-width="1.1" opacity="0.65"/>
+    <line x1="1052" y1="388" x2="1094" y2="388" stroke="#0d9488" stroke-width="1.1" opacity="0.65"/>
+    <text x="1075" y="420" text-anchor="middle" class="node-title">真实环境</text>
+  </g>
+  <g id="agent-outcome-node" data-graph-role="node" data-node-id="agent-outcome" data-semantic-role="artifact" data-graph-bounds="672,350,792,442">
+    <rect x="672" y="350" width="120" height="92" rx="10" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.8"/>
+    <circle cx="732" cy="379" r="14" fill="#dcfce7" stroke="#16a34a" stroke-width="1.3"/>
+    <path d="M725 379 L730 384 L740 373" fill="none" stroke="#16a34a" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="732" y="414" text-anchor="middle" class="node-title">任务结果</text>
+    <text x="732" y="433" text-anchor="middle" class="node-sub">真实状态已改变</text>
+  </g>
+  <g data-graph-role="decoration">
+    <rect x="674" y="460" width="108" height="30" rx="6" fill="#f8fafc" stroke="#d1d5db" stroke-width="1.1"/>
+    <text x="728" y="480" text-anchor="middle" font-size="13" font-weight="600" fill="#4b5563">读取现场</text>
+    <rect x="798" y="460" width="82" height="30" rx="6" fill="#f8fafc" stroke="#d1d5db" stroke-width="1.1"/>
+    <text x="839" y="480" text-anchor="middle" font-size="13" font-weight="600" fill="#4b5563">调用 Tool</text>
+    <rect x="896" y="460" width="242" height="30" rx="6" fill="#f8fafc" stroke="#d1d5db" stroke-width="1.1"/>
+    <text x="1017" y="480" text-anchor="middle" font-size="13" font-weight="600" fill="#4b5563">核对结果</text>
+  </g>
+
+  <g id="chat-question-label" data-graph-role="label" data-owner="chat-question" data-graph-bounds="210,195,254,215"><text x="232" y="210" text-anchor="middle" class="edge-label">提问</text></g>
+  <g id="chat-answer-label" data-graph-role="label" data-owner="chat-answer" data-graph-bounds="408,195,440,215"><text x="424" y="210" text-anchor="middle" class="edge-label">生成</text></g>
+  <g id="agent-task-label" data-graph-role="label" data-owner="agent-task" data-graph-bounds="800,175,840,195"><text x="820" y="190" text-anchor="middle" class="edge-label">任务</text></g>
+  <g id="agent-tool-call-label" data-graph-role="label" data-owner="agent-tool-call" data-graph-bounds="1006,175,1042,195"><text x="1024" y="190" text-anchor="middle" class="edge-label">调用</text></g>
+  <g id="agent-action-label" data-graph-role="label" data-owner="agent-action" data-graph-bounds="1100,286,1160,306"><text x="1130" y="301" text-anchor="middle" class="edge-label">实际行动</text></g>
+  <g id="agent-feedback-label" data-graph-role="label" data-owner="agent-feedback" data-graph-bounds="932,300,1000,320"><text x="966" y="315" text-anchor="middle" class="edge-label">结果 / 证据</text></g>
+  <g id="agent-output-label" data-graph-role="label" data-owner="agent-output" data-graph-bounds="828,288,904,308"><text x="866" y="303" text-anchor="middle" class="edge-label">达到目标时输出</text></g>
+
+  <g id="legend" data-graph-role="legend">
+    <rect data-graph-role="reserved" data-reserved-kind="legend" x="275" y="540" width="650" height="38" fill="none" stroke="none"/>
+    <line data-graph-role="decoration" x1="305" y1="559" x2="339" y2="559" stroke="#2563eb" stroke-width="2.4" marker-end="url(#arrow-blue)"/>
+    <text data-graph-role="decoration" x="350" y="563" class="legend">任务与输出</text>
+    <line data-graph-role="decoration" x1="480" y1="559" x2="514" y2="559" stroke="#ea580c" stroke-width="2.4" marker-end="url(#arrow-orange)"/>
+    <text data-graph-role="decoration" x="525" y="563" class="legend">工具行动</text>
+    <line data-graph-role="decoration" x1="650" y1="559" x2="684" y2="559" stroke="#16a34a" stroke-width="2.4" marker-end="url(#arrow-green)"/>
+    <text data-graph-role="decoration" x="695" y="563" class="legend">结果回流</text>
+  </g>
+</svg>

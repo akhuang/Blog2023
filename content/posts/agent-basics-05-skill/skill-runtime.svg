@@ -45,7 +45,7 @@
   </defs>
   <rect data-graph-role="background" width="1200.0" height="760.0" fill="#ffffff"/>
   <text x="600.0" y="56" text-anchor="middle" class="title">Skill 被加载以后，真正完成任务的是谁</text>
-  <text x="600.0" y="82" text-anchor="middle" class="subtitle">Skill 提供方法；模型做推理；Claude Code 调用工具并收回结果</text>
+  <text x="600.0" y="82" text-anchor="middle" class="subtitle">Skill 提供方法；模型做推理；DSH Agent 调用工具并收回结果</text>
   <g id="loop" data-graph-role="container" data-container-id="loop" data-semantic-role="boundary" data-graph-bounds="40,120,1160,570">
   <rect data-graph-role="container" x="40.0" y="120.0" width="1120.0" height="450.0" rx="16.0" fill="none" stroke="#dbe5f1" stroke-width="1.4" stroke-dasharray="6 5"/>
   <text x="58.0" y="144.0" class="section">一次 SKILL 驱动的 AGENT 循环</text>
@@ -81,7 +81,7 @@
   <circle cx="884.0" cy="199.0" r="4" fill="#10b981"/>
   <text x="858.0" y="234.0" font-size="28" font-weight="700" fill="#10b981">$</text>
   <text x="878.0" y="234.0" font-size="22" font-weight="500" fill="#6b7280">_</text>
-  <text x="955.0" y="254.0" text-anchor="middle" class="node-title" font-size="18.0">4 Claude Code 执行</text>
+  <text x="955.0" y="254.0" text-anchor="middle" class="node-title" font-size="18.0">4 DSH Agent 执行</text>
   <text x="955.0" y="288.0" text-anchor="middle" class="node-sub">调用已有工具或脚本</text>
   </g>
   <g id="node-skill-bundle" data-graph-role="node" data-node-id="skill-bundle" data-semantic-role="folder" data-motion-role="" data-motion-stage="" data-motion-order="" data-parent="" data-deployment-id="" data-topic-id="" data-span-id="" data-station-order="" data-status="" data-start-ms="" data-duration-ms="" data-parent-span="" data-graph-bounds="310,385,500,461">
@@ -133,6 +133,6 @@
     <text data-graph-role="decoration" x="518.08" y="629.0" class="legend">结果回到模型</text>
   </g>
   <g id="footer" data-graph-role="reserved" data-graph-bounds="48,698,433,714">
-  <text x="48.0" y="710.0" class="footnote">Skill 不会自己思考、不会独立运行、也不会训练模型；需要 Python 的只是某些 Skill 附带的脚本</text>
+  <text x="48.0" y="710.0" class="footnote">Skill 不会自己思考、不会独立运行、也不会训练模型；真正行动仍由 Tool 或 Script 完成</text>
   </g>
 </svg>

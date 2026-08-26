@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600" width="1200" height="600" data-generator="fireworks-tech-graph" data-schema-version="1" data-text-metrics="heuristic-v1" data-style-id="1" data-visual-theme="Flat Icon" data-diagram-type="flowchart" data-semantic-profile="generic" data-semantic-valid="true" data-quality-profile="showcase" data-max-bends-per-edge="2" data-max-total-bends="8" data-max-route-stretch="1.35" data-max-bridged-crossings="0" data-min-node-gap="40" data-min-container-gutter="20" data-min-label-clearance="4" data-min-segment-length="16">
+  <defs>
+    <marker id="arrow-blue" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#2563eb"/></marker>
+    <marker id="arrow-purple" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#7c3aed"/></marker>
+    <style>
+      text { font-family: 'Microsoft YaHei', 'PingFang SC', 'Microsoft JhengHei', 'SimHei', 'Helvetica Neue', Helvetica, Arial, sans-serif; }
+      .kicker { font-size:13px; font-weight:700; fill:#64748b; letter-spacing:.1em; }
+      .principle { font-size:20px; font-weight:700; fill:#111827; }
+      .principle-sub { font-size:13px; font-weight:500; fill:#64748b; }
+      .node-title { font-size:18px; font-weight:700; fill:#111827; }
+      .node-sub { font-size:12px; font-weight:500; fill:#64748b; }
+      .step { font-size:13px; font-weight:700; fill:#ffffff; }
+      .edge-label { font-size:13px; font-weight:600; fill:#6d28d9; }
+      .foot { font-size:14px; font-weight:600; fill:#475569; }
+    </style>
+  </defs>
+  <rect data-graph-role="background" width="1200" height="600" fill="#ffffff"/>
+
+  <text x="60" y="42" class="kicker">第一次任务的三个条件</text>
+
+  <g id="principle-small" data-graph-role="node" data-node-id="principle-small" data-semantic-role="card" data-graph-bounds="60,62,380,166">
+    <rect x="60" y="62" width="320" height="104" rx="12" fill="#eff6ff" stroke="#60a5fa" stroke-width="1.8"/>
+    <circle cx="98" cy="104" r="20" fill="#2563eb"/><text x="98" y="109" text-anchor="middle" class="step">1</text>
+    <text x="140" y="103" class="principle">小</text>
+    <text x="140" y="132" class="principle-sub">输入、动作、完成标准都说得清</text>
+  </g>
+
+  <g id="principle-real" data-graph-role="node" data-node-id="principle-real" data-semantic-role="card" data-graph-bounds="440,62,760,166">
+    <rect x="440" y="62" width="320" height="104" rx="12" fill="#fff7ed" stroke="#f97316" stroke-width="1.8"/>
+    <circle cx="478" cy="104" r="20" fill="#ea580c"/><text x="478" y="109" text-anchor="middle" class="step">2</text>
+    <text x="520" y="103" class="principle">真</text>
+    <text x="520" y="132" class="principle-sub">Tool 接触实际材料并留下真实结果</text>
+  </g>
+
+  <g id="principle-recoverable" data-graph-role="node" data-node-id="principle-recoverable" data-semantic-role="card" data-graph-bounds="820,62,1140,166">
+    <rect x="820" y="62" width="320" height="104" rx="12" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.8"/>
+    <circle cx="858" cy="104" r="20" fill="#16a34a"/><text x="858" y="109" text-anchor="middle" class="step">3</text>
+    <text x="900" y="103" class="principle">可恢复</text>
+    <text x="900" y="132" class="principle-sub">保留原始输入，先新增可删除的产物</text>
+  </g>
+
+  <path id="goal-observe" data-graph-role="edge" data-edge-id="goal-observe" data-source="goal" data-target="observe" data-edge-kind="flow" data-flow="control" data-bends="0" data-route-stretch="1" data-bridges="" d="M 230 325 L 270 325" fill="none" stroke="#2563eb" stroke-width="2.6" stroke-linecap="round" marker-end="url(#arrow-blue)"/>
+  <path id="observe-act" data-graph-role="edge" data-edge-id="observe-act" data-source="observe" data-target="act" data-edge-kind="flow" data-flow="control" data-bends="0" data-route-stretch="1" data-bridges="" d="M 450 325 L 500 325" fill="none" stroke="#2563eb" stroke-width="2.6" stroke-linecap="round" marker-end="url(#arrow-blue)"/>
+  <path id="act-check" data-graph-role="edge" data-edge-id="act-check" data-source="act" data-target="check" data-edge-kind="flow" data-flow="control" data-bends="0" data-route-stretch="1" data-bridges="" d="M 680 325 L 730 325" fill="none" stroke="#2563eb" stroke-width="2.6" stroke-linecap="round" marker-end="url(#arrow-blue)"/>
+  <path id="check-done" data-graph-role="edge" data-edge-id="check-done" data-source="check" data-target="done" data-edge-kind="flow" data-flow="control" data-bends="0" data-route-stretch="1" data-bridges="" d="M 910 325 L 960 325" fill="none" stroke="#2563eb" stroke-width="2.6" stroke-linecap="round" marker-end="url(#arrow-blue)"/>
+  <path id="check-feedback" data-graph-role="edge" data-edge-id="check-feedback" data-source="check" data-target="observe" data-edge-kind="feedback" data-flow="feedback" data-bends="2" data-route-stretch="1.12" data-bridges="" d="M 820 390 L 820 470 L 360 470 L 360 390" fill="none" stroke="#7c3aed" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-purple)"/>
+
+  <g id="node-goal" data-graph-role="node" data-node-id="goal" data-semantic-role="document" data-graph-bounds="50,260,230,390">
+    <path d="M50 260 H202 L230 288 V390 H50 Z" fill="#eff6ff" stroke="#2563eb" stroke-width="1.8"/>
+    <path d="M202 260 V288 H230" fill="#dbeafe" stroke="#2563eb" stroke-width="1.2"/>
+    <text x="140" y="310" text-anchor="middle" class="node-title">目标与范围</text>
+    <text x="140" y="340" text-anchor="middle" class="node-sub">指定输入、输出</text>
+    <text x="140" y="362" text-anchor="middle" class="node-sub">以及完成标准</text>
+  </g>
+
+  <g id="node-observe" data-graph-role="node" data-node-id="observe" data-semantic-role="tool" data-graph-bounds="270,260,450,390">
+    <rect x="270" y="260" width="180" height="130" rx="11" fill="#f8fafc" stroke="#64748b" stroke-width="1.8"/>
+    <circle cx="360" cy="295" r="18" fill="#dbeafe"/><path d="M351 295 Q360 285 369 295 Q360 305 351 295Z" fill="none" stroke="#2563eb" stroke-width="2"/><circle cx="360" cy="295" r="3" fill="#2563eb"/>
+    <text x="360" y="337" text-anchor="middle" class="node-title">观察</text>
+    <text x="360" y="366" text-anchor="middle" class="node-sub">Tool 读取指定材料</text>
+  </g>
+
+  <g id="node-act" data-graph-role="node" data-node-id="act" data-semantic-role="tool" data-graph-bounds="500,260,680,390">
+    <rect x="500" y="260" width="180" height="130" rx="11" fill="#fff7ed" stroke="#f97316" stroke-width="1.8"/>
+    <circle cx="590" cy="295" r="18" fill="#fed7aa"/><path d="M582 295 H598 M590 287 V303" stroke="#ea580c" stroke-width="2.4" stroke-linecap="round"/>
+    <text x="590" y="337" text-anchor="middle" class="node-title">行动</text>
+    <text x="590" y="366" text-anchor="middle" class="node-sub">Tool 新增可恢复结果</text>
+  </g>
+
+  <g id="node-check" data-graph-role="node" data-node-id="check" data-semantic-role="double_rect" data-graph-bounds="730,260,910,390">
+    <rect x="730" y="260" width="180" height="130" rx="11" fill="#faf5ff" stroke="#7c3aed" stroke-width="2"/>
+    <rect x="736" y="266" width="168" height="118" rx="8" fill="none" stroke="#7c3aed" stroke-width="1" opacity=".58"/>
+    <circle cx="820" cy="295" r="18" fill="#ede9fe"/><path d="M812 295 L818 301 L829 288" fill="none" stroke="#7c3aed" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="820" y="337" text-anchor="middle" class="node-title">核对</text>
+    <text x="820" y="366" text-anchor="middle" class="node-sub">重读结果，对照标准</text>
+  </g>
+
+  <g id="node-done" data-graph-role="node" data-node-id="done" data-semantic-role="user_avatar" data-graph-bounds="960,260,1150,390">
+    <rect x="960" y="260" width="190" height="130" rx="11" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.8"/>
+    <circle cx="1055" cy="295" r="18" fill="#dcfce7"/><path d="M1047 295 L1053 301 L1064 288" fill="none" stroke="#16a34a" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="1055" y="337" text-anchor="middle" class="node-title">完成</text>
+    <text x="1055" y="366" text-anchor="middle" class="node-sub">满足标准，交给人验收</text>
+  </g>
+
+  <g id="feedback-label" data-graph-role="label" data-owner="check-feedback" data-graph-bounds="500,420,680,446">
+    <rect x="500" y="420" width="180" height="26" rx="6" fill="#ffffff" stroke="#ddd6fe" stroke-width="1"/>
+    <text x="590" y="438" text-anchor="middle" class="edge-label">不符合：回到现场继续</text>
+  </g>
+
+  <g data-graph-role="reserved" data-reserved-kind="note" data-graph-bounds="262,520,938,558">
+    <rect x="262" y="520" width="676" height="38" rx="19" fill="#f8fafc" stroke="#cbd5e1"/>
+    <text x="600" y="545" text-anchor="middle" class="foot">第一次不求做大，只证明：模型判断 → Tool 行动 → 结果回流 → 可以验收</text>
+  </g>
+</svg>

@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600" width="1200" height="600" data-generator="fireworks-tech-graph" data-schema-version="1" data-text-metrics="heuristic-v1" data-style-id="1" data-visual-theme="Flat Icon" data-diagram-type="mind-map" data-semantic-profile="generic" data-semantic-valid="true" data-quality-profile="showcase" data-max-bends-per-edge="2" data-max-total-bends="8" data-max-route-stretch="1.35" data-max-bridged-crossings="0" data-min-node-gap="40" data-min-container-gutter="20" data-min-label-clearance="4" data-min-segment-length="16">
+  <defs>
+    <marker id="arrow-purple" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#7c3aed"/></marker>
+    <style>
+      text { font-family: 'Microsoft YaHei', 'PingFang SC', 'Microsoft JhengHei', 'SimHei', 'Helvetica Neue', Helvetica, Arial, sans-serif; }
+      .node-title { font-size:18px; font-weight:700; fill:#111827; }
+      .node-sub { font-size:12px; font-weight:500; fill:#64748b; }
+      .center-title { font-size:24px; font-weight:700; fill:#111827; }
+      .center-sub { font-size:14px; font-weight:600; fill:#6d28d9; }
+      .badge { font-size:14px; font-weight:700; fill:#ffffff; letter-spacing:.08em; }
+      .foot { font-size:13px; font-weight:600; fill:#64748b; }
+    </style>
+  </defs>
+  <rect data-graph-role="background" width="1200" height="600" fill="#ffffff"/>
+  <path id="provider-mount" data-graph-role="edge" data-edge-id="provider-mount" data-source="provider" data-target="harness" data-edge-kind="dependency" data-flow="control" data-bends="2" data-route-stretch="1" data-bridges="" d="M 300 110 L 430 110 L 430 245 L 470 245" fill="none" stroke="#7c3aed" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-purple)"/>
+  <path id="preset-mount" data-graph-role="edge" data-edge-id="preset-mount" data-source="preset" data-target="harness" data-edge-kind="dependency" data-flow="control" data-bends="2" data-route-stretch="1" data-bridges="" d="M 900 110 L 770 110 L 770 245 L 730 245" fill="none" stroke="#7c3aed" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-purple)"/>
+  <path id="tool-mount" data-graph-role="edge" data-edge-id="tool-mount" data-source="tool" data-target="harness" data-edge-kind="dependency" data-flow="control" data-bends="0" data-route-stretch="1" data-bridges="" d="M 300 300 L 470 300" fill="none" stroke="#7c3aed" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-purple)"/>
+  <path id="skill-mount" data-graph-role="edge" data-edge-id="skill-mount" data-source="skill" data-target="harness" data-edge-kind="dependency" data-flow="control" data-bends="0" data-route-stretch="1" data-bridges="" d="M 900 300 L 730 300" fill="none" stroke="#7c3aed" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-purple)"/>
+  <path id="workflow-mount" data-graph-role="edge" data-edge-id="workflow-mount" data-source="workflow" data-target="harness" data-edge-kind="dependency" data-flow="control" data-bends="2" data-route-stretch="1" data-bridges="" d="M 320 490 L 430 490 L 430 355 L 470 355" fill="none" stroke="#7c3aed" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-purple)"/>
+  <path id="session-mount" data-graph-role="edge" data-edge-id="session-mount" data-source="session" data-target="harness" data-edge-kind="dependency" data-flow="control" data-bends="2" data-route-stretch="1" data-bridges="" d="M 880 490 L 770 490 L 770 355 L 730 355" fill="none" stroke="#7c3aed" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-purple)"/>
+  <g id="node-provider" data-graph-role="node" data-node-id="provider" data-semantic-role="double_rect" data-graph-bounds="80,60,300,160">
+    <rect x="80" y="60" width="220" height="100" rx="10" fill="#eff6ff" stroke="#2563eb" stroke-width="1.8"/>
+    <rect x="86" y="66" width="208" height="88" rx="7" fill="none" stroke="#2563eb" stroke-width="1" opacity=".45"/>
+    <path d="M115 91 l6 -10 6 10 10 6 -10 6 -6 10 -6 -10 -10 -6Z" fill="#60a5fa"/>
+    <text x="205" y="102" text-anchor="middle" class="node-title">Model Provider</text>
+    <text x="190" y="132" text-anchor="middle" class="node-sub">模型地址、鉴权与模型名</text>
+  </g>
+  <g id="node-preset" data-graph-role="node" data-node-id="preset" data-semantic-role="rect" data-graph-bounds="900,60,1120,160">
+    <rect x="900" y="60" width="220" height="100" rx="10" fill="#faf5ff" stroke="#9333ea" stroke-width="1.8"/>
+    <circle cx="936" cy="96" r="16" fill="#ede9fe"/><circle cx="936" cy="91" r="5" fill="#9333ea"/><path d="M926 108 Q936 99 946 108" fill="none" stroke="#9333ea" stroke-width="2"/>
+    <text x="1020" y="102" text-anchor="middle" class="node-title">Agent Preset</text>
+    <text x="1010" y="132" text-anchor="middle" class="node-sub">角色、提示与工具组合</text>
+  </g>
+  <g id="node-tool" data-graph-role="node" data-node-id="tool" data-semantic-role="tool" data-graph-bounds="80,250,300,350">
+    <rect x="80" y="250" width="220" height="100" rx="10" fill="#fff7ed" stroke="#f97316" stroke-width="1.8"/>
+    <circle cx="118" cy="300" r="18" fill="#fed7aa"/><circle cx="118" cy="300" r="7" fill="none" stroke="#ea580c" stroke-width="2"/><path d="M118 278 V286 M118 314 V322 M96 300 H104 M132 300 H140 M102 284 L108 290 M128 310 L134 316 M134 284 L128 290 M108 310 L102 316" stroke="#ea580c" stroke-width="2" stroke-linecap="round"/>
+    <text x="200" y="302" text-anchor="middle" class="node-title">Tool</text>
+    <text x="190" y="330" text-anchor="middle" class="node-sub">文件、命令与业务能力</text>
+  </g>
+  <g id="node-skill" data-graph-role="node" data-node-id="skill" data-semantic-role="folder" data-graph-bounds="900,250,1120,350">
+    <path d="M900 272 H927 L940 250 H970 H1120 V350 H900 Z" fill="#f0fdf4" stroke="#16a34a" stroke-width="1.8"/>
+    <line x1="932" y1="300" x2="1088" y2="300" stroke="#86efac" stroke-width="2"/>
+    <line x1="932" y1="318" x2="1072" y2="318" stroke="#bbf7d0" stroke-width="2"/>
+    <text x="1010" y="291" text-anchor="middle" class="node-title">Skill</text>
+    <text x="1010" y="338" text-anchor="middle" class="node-sub">可复用的做法与资料</text>
+  </g>
+  <g id="node-workflow" data-graph-role="node" data-node-id="workflow" data-semantic-role="workflow" data-graph-bounds="60,440,320,540">
+    <rect x="60" y="440" width="260" height="100" rx="10" fill="#f0fdfa" stroke="#0f766e" stroke-width="1.8"/>
+    <circle cx="100" cy="490" r="8" fill="#0f766e"/><circle cx="126" cy="474" r="8" fill="#5eead4" stroke="#0f766e"/><circle cx="126" cy="506" r="8" fill="#5eead4" stroke="#0f766e"/><path d="M108 490 H114 L120 478 M114 490 L120 502" fill="none" stroke="#0f766e" stroke-width="2"/>
+    <text x="218" y="486" text-anchor="middle" class="node-title" font-size="16">Subagent / Workflow</text>
+    <text x="200" y="516" text-anchor="middle" class="node-sub">分工、编排与多步流程</text>
+  </g>
+  <g id="node-session" data-graph-role="node" data-node-id="session" data-semantic-role="memory" data-graph-bounds="880,440,1140,540">
+    <rect x="880" y="440" width="260" height="100" rx="10" fill="#fef2f2" stroke="#dc2626" stroke-width="1.8"/>
+    <rect x="910" y="468" width="54" height="42" rx="6" fill="#fee2e2" stroke="#dc2626" stroke-width="1.4" stroke-dasharray="5 3"/>
+    <line x1="920" y1="480" x2="954" y2="480" stroke="#fca5a5" stroke-width="2"/><line x1="920" y1="492" x2="948" y2="492" stroke="#fecaca" stroke-width="2"/>
+    <text x="1050" y="486" text-anchor="middle" class="node-title" font-size="16">Session / Context</text>
+    <text x="1030" y="516" text-anchor="middle" class="node-sub">会话、历史与工作上下文</text>
+  </g>
+  <g id="node-harness" data-graph-role="node" data-node-id="harness" data-semantic-role="double_rect" data-graph-bounds="470,210,730,390">
+    <rect x="470" y="210" width="260" height="180" rx="14" fill="#faf5ff" stroke="#7c3aed" stroke-width="2.5"/>
+    <rect x="477" y="217" width="246" height="166" rx="10" fill="none" stroke="#7c3aed" stroke-width="1.2" opacity=".58"/>
+    <circle cx="600" cy="255" r="25" fill="#ede9fe"/><path d="M600 236 L608 247 L621 250 L611 259 L613 273 L600 266 L587 273 L589 259 L579 250 L592 247Z" fill="#7c3aed"/>
+    <text x="600" y="310" text-anchor="middle" class="center-title">DSH Agent Harness</text>
+    <text x="600" y="340" text-anchor="middle" class="center-sub">装配 · 调度 · 运行</text>
+    <rect x="526" y="354" width="148" height="28" rx="14" fill="#7c3aed"/>
+    <text x="600" y="373" text-anchor="middle" class="badge">一切皆插件</text>
+  </g>
+  <g data-graph-role="reserved" data-reserved-kind="note" data-graph-bounds="430,560,770,588">
+    <text x="600" y="580" text-anchor="middle" class="foot">同一个 Harness，按任务装配不同能力</text>
+  </g>
+</svg>

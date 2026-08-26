@@ -1,83 +1,87 @@
 ---
-title: "Agent 入门 02｜Claude Code 这一套，到底谁在哪里运行"
+title: "Agent 入门 02｜模型、Harness、Agent、Tool 与 Skill 如何协作"
 date: 2026-08-19T09:20:00+08:00
-description: "把 Claude、Claude Code、CC Switch、XLB、工具和 Skill 放回各自层级，看懂 Windows 内部 Agent 的运行路径。"
-tags: ["Agent", "Claude Code", "CC Switch", "Skill", "内部模型"]
+description: "把模型服务、Agent Harness、Agent、Tool 与 Skill 放回各自层级，并用 DSH 看懂一次任务怎样流过整套系统。"
+tags: ["Agent", "DSH", "Harness", "Tool", "Skill", "模型服务"]
 categories: "Agent 入门"
 comment: true
 draft: false
 ---
 
-> 系列导读：[Agent 入门：给 Windows 小白的第一套地图](/posts/agent-basics/)
+> 系列导读：[Agent 入门｜从会回答，到能完成任务](/posts/agent-basics/)
 
-在 Windows 上打开 CC Switch，选中 XLB，再到 Windows Terminal 输入 `claude`。屏幕里很快出现一个能读项目、改文件、运行命令的 Agent。
+当一个 Agent 读完文件、修改内容并报告结果时，我们看到的是一段连续过程。系统内部却不是一个东西从头做到尾：模型服务负责推理，Harness 负责调度，Tool 负责行动，Skill 提供做事方法，Agent 则是这些部分围绕目标运行起来后的整体。
 
-这时最容易冒出一个误解：“我已经把 XLB 模型装进电脑，Claude Code 就是这个模型，Skill 是给模型加的新能力。”
+**理解 Agent 的关键，不是记住更多产品名，而是看清信息和动作怎样在这些层之间流动。**
 
-这三个判断都把不同层级挤在了一起。**你安装到 Windows 的主要是 Agent 客户端和它的本地工具；模型推理通常发生在远端服务，CC Switch 负责配置路线，Skill 负责提供做事说明。**
+![模型服务、DSH、Agent、Tool 与 Skill 的分层关系](windows-agent-stack.png)
 
-![Windows、Claude Code、本地工具与内部模型的分层关系](windows-agent-stack.png)
+## 先分清“部件”和“运行中的整体”
 
-## 先把六个名字放回原位
+| 层级 | 它负责什么 |
+|---|---|
+| 人与任务 | 给出目标、材料、范围和完成标准 |
+| Agent | 在一次会话中围绕目标持续判断和行动 |
+| Agent Harness | 管理会话、上下文、模型调用和工具执行 |
+| 模型服务 | 运行模型推理，返回文字或工具调用意图 |
+| Tool | 读取或改变文件、命令、网页和业务系统 |
+| Skill | 为某类任务提供知识、步骤、模板和边界 |
+| 工作环境 | 保存文件、程序状态和工具真正接触的对象 |
 
-| 名称 | 通常在哪里 | 负责什么 |
-| --- | --- | --- |
-| Claude 模型 | Anthropic 或模型服务方的服务器 | 理解输入、判断下一步、生成文字或工具调用 |
-| Claude Code | 你的 Windows 电脑 | 管理 Agent 循环、上下文、会话、工具与执行环境 |
-| Tool | 本机或它连接的服务 | 读写文件、搜索、执行本地命令、访问外部系统 |
-| Skill | 本机配置目录中的 Markdown 文件及配套资源 | 向 Agent 提供可复用的知识、步骤和工作方式 |
-| CC Switch | 通常是本机第三方配置工具 | 切换服务地址、凭据或模型配置；也可按 API 格式开启本地路由 |
-| XLB | 公司内部算力 | 本系列中指内部部署的模型服务，内部简称为“Qwen3 35B” |
+Agent 不是表格里又一个可以单独下载的零件。它更像“运行中的工作单元”：某个目标进入 Harness 后，模型、指令和工具被组织起来，在一个会话里持续工作。任务结束，或者会话停止，这一次 Agent 运行也就结束了。
 
-Claude 模型和 Claude Code 是 Anthropic 的产品；Claude Code 提供自己的内置工具，并实现了 Skill 机制。**Tool 是通用概念，Agent Skills 也是开放标准，不能把它们都算成 Anthropic 产品。**CC Switch 是第三方工具，XLB 是公司内部模型服务；能与 Claude Code 配合，不等于它们变成了 Claude Code 的一部分。
+## 模型服务只负责一次次推理
 
-## Claude 是“脑”，Claude Code 是“工作台”
+模型服务接收一包输入，其中可能包含人的要求、对话历史、文件片段、Skill 说明和上一步工具结果。模型根据这些信息生成回答，或者提出下一步工具调用。
 
-“Claude”这个名字有时指聊天产品，有时指模型。讨论这套 Agent 结构时，我们先用它指负责推理的模型。
+但模型服务通常不直接替你移动本机文件，也不天然知道一个命令是否成功。它只能根据 Harness 送来的上下文作判断。工具执行以后，Harness 必须把真实结果再次送回，模型才能继续。
 
-模型收到任务、当前对话、读到的文件片段和工具结果，然后决定回答什么或下一步调用什么工具。Claude Code 则是模型外面的运行框架。Anthropic 的官方说明写得很直接：Claude Code 提供工具、上下文管理和执行环境，把模型包进 Agent 循环。[How Claude Code works](https://code.claude.com/docs/en/how-claude-code-works)
+模型服务可以运行在本机、内网或云端；所在位置会改变连接方式和数据路径，却不改变它在结构中的职责：提供推理，而不是独自承担完整的 Agent 循环。
 
-所以，安装 `claude` 命令不等于把完整大模型下载到电脑。Claude Code 会把需要推理的请求发往配置好的服务；模型返回决定后，Claude Code 再在本机执行相应工具。官方对本地环境的定义也是：代码和工具在你的机器上运行。[执行环境说明](https://code.claude.com/docs/en/how-claude-code-works#execution-environments)
+## Harness 把分散部件接成循环
 
-一条典型路径可以写成：
+Harness 是这套系统的调度层。它保存会话，选择本轮要交给模型的上下文，向模型说明有哪些工具可用，执行模型发出的工具调用，再把结果放回下一轮。
+
+DSH 是一个开源 Agent Harness。它采用插件化结构，把模型接入、工具、Skill、会话能力和界面等组成部分装配在一起。[DSH 项目说明](https://github.com/deepseek-ai/deepseek-harness)
+
+在 DSH 中，Agent Preset 用来定义一类 Agent 在单个会话中采用的身份、提示和工具组合。选择不同 Preset，不是在更换“另一个模型名字”，而是在改变这次 Agent 运行时可见的说明和能力集合。[Agent Preset 的作用](https://github.com/deepseek-ai/deepseek-harness/tree/master/packages/preset)
+
+DSH 只是 Harness 的一个具体例子。其他系统可以用不同的界面、配置方式和扩展机制，但只要它承担上下文管理、模型调度和工具回传，就处在同一层。
+
+## Tool 是动作，Skill 是方法
+
+Tool 和 Skill 经常一起出现，却解决不同问题。
+
+Tool 回答“系统能做什么动作”。文件工具可以读取和写入，网页工具可以打开页面，业务工具可以查询或提交数据。它接收明确参数，执行后返回执行结果或现场证据；这些结果仍需要结合来源和任务目标核对。
+
+Skill 回答“面对一类任务，应该怎样做”。它可以要求先取哪些信息、按什么顺序判断、使用什么模板、最后怎样验收。Skill 可能指导 Agent 调用多个 Tool，却不等于那些 Tool 本身。
+
+例如，查询订单状态的是 Tool；“先核对订单范围，再归纳异常，最后生成一份待审摘要”是 Skill。只有 Tool，Agent 有手但未必懂这类工作的做法；只有 Skill，没有相应 Tool，它知道步骤却无法取得真实数据。
+
+DSH 的 Skill 机制也遵循这条分工：系统先向模型提供可用 Skill 的目录，任务需要时再加载具体内容。加载发生在会话和上下文层，不会修改基础模型的参数。[DSH Skills 说明](https://github.com/deepseek-ai/deepseek-harness/blob/master/docs/subsystems/skills.md)
+
+## 一次任务怎样流过系统
+
+把“读取三份材料，生成差异清单并核对数量”交给 Agent 后，典型链路是：
 
 ```text
-你输入任务
-  -> Windows 上的 Claude Code 组织上下文
-  -> 路线 A：直接请求兼容 Anthropic Messages 的内部接口
-     或路线 B：先进入本机 CC Switch Routing，再转换并转发
-  -> XLB 内部模型服务
-  -> 模型决定回复或调用工具
-  -> Claude Code 在 Windows 上执行工具
-  -> 工具结果再次交给模型判断
+人给出目标与材料
+  -> Harness 组织本轮上下文
+  -> 模型服务判断下一步
+  -> Harness 调用读取工具
+  -> 工具返回文件内容
+  -> 模型根据内容生成清单
+  -> Harness 调用写入工具
+  -> 工具返回写入结果
+  -> Agent 重新读取并核对数量
 ```
 
-这正是上一篇讲的“收集—行动—核对”，只不过现在看清了每一步由谁完成。
+这条链路也解释了为什么“模型回答正常”不能证明整个 Agent 正常。模型服务能返回文字，只说明推理通道可用；读不到文件，要查工作环境和文件 Tool；知道步骤却没有按要求执行，要看 Skill 是否进入上下文；工具执行后不再核对，则要看 Harness 是否继续了循环。
 
-## Tool 是手，Skill 是操作手册
+分层不是为了多造术语，而是为了让问题有归属。模型决定得不好、工具没有执行、Skill 没被采用、会话丢了上下文，是四类不同故障。把它们都叫作“Agent 不行”，就失去了定位问题的入口。
 
-Tool 能产生现实动作。读取一个文件、执行 `git status`、搜索网页，都是工具。没有工具，模型只能输出文字；有了工具，结果会回到 Agent 循环，影响下一步判断。[Claude Code 工具说明](https://code.claude.com/docs/en/how-claude-code-works#tools)
-
-Skill 不等于 Tool。官方定义中，Skill 的入口是 `SKILL.md`，内容可以是知识、说明或多步流程；Claude Code 在任务相关时加载它，也可以由用户直接调用。Skill 还能带参考资料和脚本，但 Skill 本身首先是一份供模型理解和遵循的工作说明。[Claude Code Skills](https://code.claude.com/docs/en/skills)
-
-例如，“查询合同数据”的接口是 Tool；“先查合同，再按批次归纳风险，最后形成待审草稿”是 Skill。前者给 Agent 一只手，后者告诉它这只手该怎样用于公司的工作。
-
-## CC Switch 切的是配置，不负责推理
-
-Anthropic 官方支持把 Claude Code 指向组织的 LLM 网关。通用方式是设置 `ANTHROPIC_BASE_URL`，再提供令牌或 API Key。官方同时强调：`ANTHROPIC_BASE_URL` 只改变请求发往哪里，并不自动决定由哪个模型回答；模型还需要单独配置。[网关连接](https://code.claude.com/docs/en/llm-gateway-connect)与[模型配置](https://code.claude.com/docs/en/model-config)是两个层面。
-
-在目标 Windows 实机上确认之前，我们只能把 CC Switch 理解成“帮助切换这些配置的第三方界面”。它到底改了环境变量、`settings.json`，还是开启了本地路由，需要观察实际配置和运行状态。界面显示“切换成功”也只证明它完成了自己的操作，不能单独证明真实请求走了哪条路。
-
-验收方式取决于 CC Switch 采用哪条路线。直接连接兼容 Anthropic Messages 的服务时，可以在 Claude Code 里运行 `/status`，检查 `Anthropic base URL`、认证来源和当前模型，再发一条真实消息。[官方网关检查方法](https://code.claude.com/docs/en/llm-gateway-connect#check-for-an-existing-configuration)如果 CC Switch 开启了本地路由与接管，`/status` 看到的可能是 `127.0.0.1` 一类本地地址；这时还要结合 CC Switch Routing 页的当前 Provider 和请求计数，才能确认请求是否继续转发到 XLB。安装篇会分别给出验收方法。
-
-## XLB 是公司内部的模型服务
-
-本系列采用公司内部口径：**XLB 指部署在内部算力上的模型服务，“Qwen3 35B”是这项服务的内部简称，不是本文核实过的公开标准型号或可直接填写的模型 ID。**准确模型 ID 必须以内部配置卡为准。选择 XLB 不是把模型下载到个人电脑，而是让 Claude Code 把推理请求发往公司内部接口，再由内部算力完成推理。
-
-这里还要保留一条产品边界：内部所称的 Qwen 模型不是 Claude 模型。这是一条公司内部验证的兼容接入路径，不是 Anthropic 官方承诺支持的组合。Anthropic 官方说明并不支持通过第三方网关把 Claude Code 路由到非 Claude 模型，也不保证全部功能都能正常工作。[Other LLM gateways](https://code.claude.com/docs/en/llm-gateway)
-
-把层级分清以后，排错也会简单许多：命令无法读文件，先看 Claude Code 与本机工具；Skill 没触发，先看 Skill 的位置和说明；请求认证失败，查内部服务地址与凭据；XLB 回答异常，则检查内部模型服务和兼容接口。不要让一个名字替整条链路背锅。
+最终可以把整套关系收成一句话：**模型服务提供判断，Tool 提供动作，Skill 提供方法，Harness 让三者围绕目标持续协作；这段运行中的协作，就是我们所说的 Agent。**
 
 ---
 
-上一篇：[Agent 入门 01｜聊天机器人和 Agent](/posts/agent-basics-01-chat-agent/) ｜ 下一篇：[Agent 入门 03｜在 Windows 上装好 Claude Code](/posts/agent-basics-03-windows-setup/)
+上一篇：[Agent 入门 01｜Chat 和 Agent，差别究竟在哪里](/posts/agent-basics-01-chat-agent/) ｜ 下一篇：[Agent 入门 03｜DSH 是什么：Agent 如何被组合出来](/posts/agent-basics-03-windows-setup/)

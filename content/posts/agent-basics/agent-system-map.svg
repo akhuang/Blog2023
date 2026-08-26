@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600" width="1200" height="600" data-generator="fireworks-tech-graph" data-schema-version="1" data-text-metrics="heuristic-v1" data-style-id="1" data-visual-theme="Flat Icon" data-diagram-type="agent-architecture" data-semantic-profile="generic" data-semantic-valid="true" data-quality-profile="showcase" data-max-bends-per-edge="2" data-max-total-bends="12" data-max-route-stretch="1.35" data-max-bridged-crossings="0" data-min-node-gap="40" data-min-container-gutter="20" data-min-label-clearance="4" data-min-segment-length="16">
+  <defs>
+    <marker id="arrow-blue" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0,10 3.5,0 7" fill="#2563eb"/></marker>
+    <marker id="arrow-purple" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0,10 3.5,0 7" fill="#7c3aed"/></marker>
+    <marker id="arrow-orange" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0,10 3.5,0 7" fill="#ea580c"/></marker>
+    <marker id="arrow-green" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto"><polygon points="0 0,10 3.5,0 7" fill="#16a34a"/></marker>
+    <style>text{font-family:'Microsoft YaHei','PingFang SC','Hiragino Sans GB','Arial Unicode MS','Helvetica Neue',Arial,sans-serif}.title{font-size:20px;font-weight:700;fill:#111827}.sub{font-size:13px;font-weight:500;fill:#6b7280}.small{font-size:12px;font-weight:600;fill:#4b5563}.legend{font-size:12px;font-weight:500;fill:#6b7280}</style>
+  </defs>
+  <rect data-graph-role="background" width="1200" height="600" fill="#ffffff"/>
+  <path id="chat-harness" data-graph-role="edge" data-edge-id="chat-harness" data-source="chat" data-target="harness" data-edge-kind="flow" data-flow="data" data-bends="0" d="M230 180 H360" fill="none" stroke="#2563eb" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-blue)"/>
+  <g data-graph-role="label" data-owner="chat-harness" data-graph-bounds="271.0,148,317.0,168"><rect x="271.0" y="148" width="46" height="20" rx="5" fill="#ffffff" opacity="0.94"/><text x="294" y="162" text-anchor="middle" class="small">任务</text></g>
+  <path id="skill-harness" data-graph-role="edge" data-edge-id="skill-harness" data-source="skill" data-target="harness" data-edge-kind="flow" data-flow="data" data-bends="0" d="M230 400 H360" fill="none" stroke="#16a34a" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-green)"/>
+  <g data-graph-role="label" data-owner="skill-harness" data-graph-bounds="266.0,368,322.0,388"><rect x="266.0" y="368" width="56" height="20" rx="5" fill="#ffffff" opacity="0.94"/><text x="294" y="382" text-anchor="middle" class="small">提供做法</text></g>
+  <path id="harness-model" data-graph-role="edge" data-edge-id="harness-model" data-source="harness" data-target="model" data-edge-kind="flow" data-flow="data" data-bends="0" d="M660 220 H820" fill="none" stroke="#7c3aed" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-purple)"/>
+  <g data-graph-role="label" data-owner="harness-model" data-graph-bounds="712.0,188,768.0,208"><rect x="712.0" y="188" width="56" height="20" rx="5" fill="#ffffff" opacity="0.94"/><text x="740" y="202" text-anchor="middle" class="small">请求推理</text></g>
+  <path id="model-harness" data-graph-role="edge" data-edge-id="model-harness" data-source="model" data-target="harness" data-edge-kind="flow" data-flow="data" data-bends="0" d="M820 280 H660" fill="none" stroke="#7c3aed" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-purple)"/>
+  <g data-graph-role="label" data-owner="model-harness" data-graph-bounds="677.0,288,803.0,308"><rect x="677.0" y="288" width="126" height="20" rx="5" fill="#ffffff" opacity="0.94"/><text x="740" y="302" text-anchor="middle" class="small">回答 / 调用建议</text></g>
+  <path id="harness-tool" data-graph-role="edge" data-edge-id="harness-tool" data-source="harness" data-target="tool" data-edge-kind="flow" data-flow="data" data-bends="0" d="M660 360 H820" fill="none" stroke="#ea580c" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-orange)"/>
+  <g data-graph-role="label" data-owner="harness-tool" data-graph-bounds="717.0,328,763.0,348"><rect x="717.0" y="328" width="46" height="20" rx="5" fill="#ffffff" opacity="0.94"/><text x="740" y="342" text-anchor="middle" class="small">调用</text></g>
+  <path id="tool-harness" data-graph-role="edge" data-edge-id="tool-harness" data-source="tool" data-target="harness" data-edge-kind="flow" data-flow="data" data-bends="2" d="M920 440 V500 H510 V450" fill="none" stroke="#16a34a" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow-green)"/>
+  <g data-graph-role="label" data-owner="tool-harness" data-graph-bounds="671.0,468,769.0,488"><rect x="671.0" y="468" width="98" height="20" rx="5" fill="#ffffff" opacity="0.94"/><text x="720" y="482" text-anchor="middle" class="small">结果 / 证据</text></g>
+  <g id="node-chat" data-graph-role="node" data-node-id="chat" data-semantic-role="rect" data-graph-bounds="40,130,230,230">
+    <rect x="40" y="130" width="190" height="100" rx="10" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+    <circle cx="70" cy="162" r="16" fill="#2563eb" fill-opacity="0.12" stroke="#2563eb" stroke-width="1.3"/>
+    <text x="70" y="167" text-anchor="middle" font-size="13" font-weight="700" fill="#2563eb">C</text>
+    <text x="147.0" y="174" text-anchor="middle" class="title">Chat</text>
+    <text x="135.0" y="202" text-anchor="middle" class="sub">接收问题与展示回答</text>
+  </g>
+  <g id="node-skill" data-graph-role="node" data-node-id="skill" data-semantic-role="rect" data-graph-bounds="40,350,230,450">
+    <rect x="40" y="350" width="190" height="100" rx="10" fill="#f0fdf4" stroke="#16a34a" stroke-width="2"/>
+    <circle cx="70" cy="382" r="16" fill="#16a34a" fill-opacity="0.12" stroke="#16a34a" stroke-width="1.3"/>
+    <text x="70" y="387" text-anchor="middle" font-size="13" font-weight="700" fill="#16a34a">S</text>
+    <text x="147.0" y="394" text-anchor="middle" class="title">Skill</text>
+    <text x="135.0" y="422" text-anchor="middle" class="sub">知识、步骤与模板</text>
+  </g>
+  <g id="node-harness" data-graph-role="node" data-node-id="harness" data-semantic-role="double_rect" data-graph-bounds="360,160,660,450">
+    <rect x="360" y="160" width="300" height="290" rx="14" fill="#faf5ff" stroke="#7c3aed" stroke-width="3"/>
+    <rect x="367" y="167" width="286" height="276" rx="10" fill="none" stroke="#c4b5fd" stroke-width="1.3"/>
+    <circle cx="510" cy="235" r="36" fill="#ede9fe" stroke="#7c3aed" stroke-width="1.5"/>
+    <text x="510" y="243" text-anchor="middle" font-size="26" font-weight="700" fill="#7c3aed">A</text>
+    <text x="510" y="310" text-anchor="middle" class="title" font-size="24">Agent Harness</text>
+    <text x="510" y="344" text-anchor="middle" class="sub">保存会话 · 组织上下文 · 调度循环</text>
+    <rect x="410" y="372" width="200" height="42" rx="8" fill="#ffffff" stroke="#ddd6fe" stroke-width="1.2"/>
+    <text x="510" y="399" text-anchor="middle" font-size="16" font-weight="700" fill="#4c1d95">运行中的 Agent</text>
+  </g>
+  <g id="node-model" data-graph-role="node" data-node-id="model" data-semantic-role="rect" data-graph-bounds="820,170,1120,280">
+    <rect x="820" y="170" width="300" height="110" rx="10" fill="#faf5ff" stroke="#9333ea" stroke-width="2"/>
+    <circle cx="850" cy="202" r="16" fill="#9333ea" fill-opacity="0.12" stroke="#9333ea" stroke-width="1.3"/>
+    <text x="850" y="207" text-anchor="middle" font-size="13" font-weight="700" fill="#9333ea">M</text>
+    <text x="982.0" y="214" text-anchor="middle" class="title">模型服务</text>
+    <text x="970.0" y="242" text-anchor="middle" class="sub">根据上下文完成推理</text>
+  </g>
+  <g id="node-tool" data-graph-role="node" data-node-id="tool" data-semantic-role="rect" data-graph-bounds="820,330,1120,440">
+    <rect x="820" y="330" width="300" height="110" rx="10" fill="#fff7ed" stroke="#ea580c" stroke-width="2"/>
+    <circle cx="850" cy="362" r="16" fill="#ea580c" fill-opacity="0.12" stroke="#ea580c" stroke-width="1.3"/>
+    <text x="850" y="367" text-anchor="middle" font-size="13" font-weight="700" fill="#ea580c">T</text>
+    <text x="982.0" y="374" text-anchor="middle" class="title">Tool</text>
+    <text x="970.0" y="402" text-anchor="middle" class="sub">读取、查询、运行或写入</text>
+  </g>
+  <g data-graph-role="legend"><line x1="370" y1="555" x2="405" y2="555" stroke="#7c3aed" stroke-width="2.4" marker-end="url(#arrow-purple)"/><text x="418" y="559" class="legend">模型推理</text><line x1="535" y1="555" x2="570" y2="555" stroke="#ea580c" stroke-width="2.4" marker-end="url(#arrow-orange)"/><text x="583" y="559" class="legend">工具行动</text><line x1="695" y1="555" x2="730" y2="555" stroke="#16a34a" stroke-width="2.4" marker-end="url(#arrow-green)"/><text x="743" y="559" class="legend">结果回流</text></g>
+</svg>
