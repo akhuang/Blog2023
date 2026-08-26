@@ -1,8 +1,8 @@
 ---
 title: "Agent 入门｜给第一次使用 AI Agent 的同事"
 date: 2026-08-19T10:20:00+08:00
-description: "从模型、聊天和 Agent 讲起，在 Windows 上安装 Claude Code 与 CC Switch，并用内部模型服务跑通第一个任务。"
-tags: [Agent, Claude Code, CC Switch, Windows]
+description: "从模型、Chat 和 Agent 讲起，分清 Harness、Tool 与 Skill，并完成一个可以亲手检查结果的任务。"
+tags: [Agent, AI, Harness, Tool, Skill]
 featured_image: ""
 images: []
 categories: "Agent 入门"
@@ -10,32 +10,47 @@ comment: true
 draft: false
 ---
 
-你不需要会编程，也不需要先学 Python。
+在常见的线上聊天产品里输入一个问题，我们通常期待得到一段回答：解释一件事、整理一份摘要、给出几个建议。
 
-这套文章写给第一次接触 AI Agent 的同事。我们从最容易混在一起的几个词讲起：模型是什么，聊天是什么，Agent 为什么能修改文件，Claude Code、CC Switch 和公司内部模型服务又分别处在哪一层。概念弄清以后，再在 Windows 上安装工具，完成一个可以亲手检查结果的小任务。
+使用 Agent 时，期待会不一样。我们不只想让它回答，还想让它读取材料、调用工具、处理文件，最后留下一个可以检查的结果。
 
-这不是一套“背术语”的课程。每一篇只解决一个具体问题：前三篇先看懂，后五篇再照着做。
+两边都可能使用大语言模型，差别却不在模型名字。**Chat 是人与 AI 交互的一种形态；Agent 是模型在 Harness 和 Tool 支持下完成多步任务的一种工作方式。**产品会不断变化，这条关系更值得先弄清。
 
-## 学完以后，你应该能做到什么
+## 先把六个词放回原位
 
-- 用自己的话说清模型、聊天、Agent、工具和 Skill 的区别；
-- 看懂一次任务是在自己的 Windows 电脑上运行，还是在远端模型服务中推理；
-- 在 Windows 上安装 Claude Code 和 CC Switch，不为基础环境额外安装 Python 或 Node.js；
-- 接入公司批准的模型服务，并通过真实请求验证，而不是只看“切换成功”的界面；
-- 让 Agent 阅读、创建和修改一个练习目录里的文件；
-- 给任务写清范围、交付物和验收标准，最后由人检查结果。
+| 名称 | 它负责什么 |
+|---|---|
+| 模型 | 根据当前输入和上下文完成推理 |
+| Chat | 让人通过多轮消息与模型交互 |
+| Agent Harness | 保存会话、组织上下文、调度模型与工具 |
+| Agent | 围绕一个目标反复观察、行动和核对 |
+| Tool | 真正读取文件、运行命令、查询系统或写入结果 |
+| Skill | 把一类任务的知识、步骤和模板交给 Agent |
+
+模型可以判断下一步该做什么，但它不会凭空长出一双手。真正接触文件和系统的是 Tool；决定何时把什么信息交给模型、怎样收回工具结果的是 Harness；Skill 则像一份可复用的工作说明。
+
+一个产品当前是 Chat 还是 Agent，不应只看它有没有聊天界面。更可靠的判断是：它能否取得真实现场，能否调用工具，能否观察结果，并根据结果继续工作。同一个产品也可能同时提供 Chat 与 Agent 能力。
+
+## 看完以后，你应该能做到什么
+
+- 用自己的话说清模型、Chat、Agent、Harness、Tool 和 Skill 的区别；
+- 看懂模型推理与工具执行可能发生在不同位置；
+- 判断一个产品当前提供的是聊天回答，还是可以继续执行的 Agent；
+- 启动一个 Agent Harness，完成一次真实请求；
+- 让 Agent 读取材料、创建结果，再由自己亲手验收；
+- 给任务写清目标、范围、交付物和完成标准。
 
 ## 系列目录
 
-### 第一部分：先把几个词分开
+### 第一部分：先把概念分开
 
 1. [00｜模型、训练、推理和聊天是什么](/posts/agent-basics-00-model-chat/)
 2. [01｜聊天机器人和 Agent 有什么不同](/posts/agent-basics-01-chat-agent/)
-3. [02｜Claude、Claude Code、CC Switch、XLB 分别是什么](/posts/agent-basics-02-claude-code-stack/)
+3. [02｜模型、Agent Harness、Tool、Skill 和模型服务分别在哪一层](/posts/agent-basics-02-claude-code-stack/)
 
-### 第二部分：在 Windows 上跑起来
+### 第二部分：让 Agent 真正做一件事
 
-4. [03｜Windows 从零安装内部 Agent 环境](/posts/agent-basics-03-windows-setup/)
+4. [03｜在 Windows 上启动 Agent 环境](/posts/agent-basics-03-windows-setup/)
 5. [04｜让 Agent 完成第一个真实任务](/posts/agent-basics-04-first-task/)
 
 ### 第三部分：从“能用”走到“会用”
@@ -46,16 +61,16 @@ draft: false
 
 ## 先记住三句话
 
-**模型负责推理，工具负责行动。** 模型可以判断下一步该做什么，但真正读取文件、运行命令和保存结果的是工具。
+**模型负责推理，工具负责行动。** 模型生成回答或动作建议，工具才真正接触文件、命令和业务系统。
 
-**Claude Code 是 Agent 程序，不是模型本身。** 它运行在你的 Windows 电脑上，把任务、文件上下文和工具结果交给模型，再执行模型提出的下一步动作。
+**Agent Harness 不是模型。** 它把任务、上下文、模型、Tool 和 Skill 组织起来，让一次回答变成可以继续观察和执行的过程。
 
-**Skill 是工作说明，不是另一个 AI。** 它告诉 Agent 某类任务应该按什么方法做；如果 Skill 附带脚本，真正运行脚本的仍是 Claude Code 所调用的本地工具。
+**结果需要验收。** Agent 说“完成了”不算证据；重新打开文件、检查系统状态或核对工具返回，才知道事情是否真的做成。
 
-## 这套文章采用的环境边界
+## 这套文章采用的实践边界
 
-安装篇只讲 **Windows 原生环境**，不讲 macOS，也不把 WSL、Python 或 Node.js 当作入门前提。以后某个具体 Skill 确实需要 Python 时，再按该 Skill 的固定版本和安装说明补装。
+概念部分不绑定某个产品。实践部分以 Windows 和 DSH 为例，因为它能清楚展示 Web UI、Agent Preset、Tool 与 Skill 怎样组成一个 Agent。DSH 当前通过 Node.js 运行；Python 不是基础前提，只有某个 Skill 明确依赖 Python 脚本时才需要安装。
 
-CC Switch 是第三方开源配置工具，不是 Anthropic 官方产品。本系列中的 **XLB**，专指部署在公司内部算力上的模型服务；“Qwen3 35B”采用公司内部简称，不把它当作公开标准型号或可直接填写的模型 ID，准确标识以内部配置卡为准。它不是安装在个人 Windows 电脑里的模型，也不是 Claude Code 的组成部分。这是公司内部的兼容接入方案，不是 Anthropic 官方支持的模型组合；一条消息能正常返回，也不代表 Claude Code 的全部能力都已兼容。正文会把确定的安装和验证路径写清；涉及内部地址、密钥来源、模型 ID 的部分，只使用占位符，由内部管理员提供，绝不会发布真实凭据。
+无论使用云端还是内部模型服务，模型服务都属于推理层，不是 Agent，也不是 Harness。模型服务负责推理；Harness 负责运行 Agent；Tool 负责接触真实环境。把这几层分开，换成别的模型、别的 Harness 或别的业务场景时，仍然能看懂整条链路。
 
 准备好以后，从 [第 00 篇](/posts/agent-basics-00-model-chat/) 开始。
